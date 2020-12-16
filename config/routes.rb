@@ -14,6 +14,30 @@ Rails.application.routes.draw do
     get 'customers/sign_up' => 'customers/registrations#new', as: 'new_customer_registration'
     post 'customers' => 'customers/registrations#create', as: 'customer_registration'
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
+    post 'customers/password' => 'customers/passwords#create', as: 'create_customer_password'
+    get 'customers/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
+    patch 'customers/password' => 'customers/passwords#update', as: 'update_customer_password'
   end
+
   root "homes#top"
+  get "/about" => "homes#about"
+  resource :customers, only: [:show, :edit, :update]
+  get 'customers/out' => 'customers#out'
+  patch 'customers/hide' => 'customers#hide'
+  resources :cart_products, only: [:create, :index, :update, :destroy]
+  delete "cart_products" => "cart_products#destroy_all"
+  resources :products, only: [:index, :show]
+  resources :orders, only: [:new, :create, :index, :show]
+  get "orders/finish" => "orders#finish"
+  post "orders/confirm" => "orders#confirm"
+  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
+  namespace :admins do
+    root "homes#top"
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :products, only: [:index, :new, :show, :create, :edit, :update]
+    resources :categories, only: [:create, :index, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_products, only: [:update]
+  end
 end
