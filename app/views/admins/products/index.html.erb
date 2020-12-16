@@ -1,0 +1,30 @@
+<h2>商品一覧</h2>
+
+<div>
+  <%= link_to "新規追加",new_admins_product_path %>
+</div>
+
+<div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td>商品id記載予定</td>
+          <td><%=  product.name %></td>
+          <td>税抜価格記載予定</td>
+          <td>ジャンル記載予定</td>
+          <td>販売中or販売停止中記載予定</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<h2>商品編集</h2>
+
+<%= form_with model:@product, local:true do |f| %>
+  <div class="form-group">
+    <span>画像表示</span>
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="form-group">
+    <%= f.label "商品名" %>
+    <%= f.text_area :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label "商品説明" %>
+    <%= f.text_field :introduction %>
+  </div>
+  <p>ジャンル　ぷる</p>
+  <p>税抜き価格　プル</p>
+  <p>販売ステータス</p>
+  <div class="form-group">
+    <%= f.submit "変更を保存", class: 'btn btn-danger' %>
+  </div>
+<% end %>

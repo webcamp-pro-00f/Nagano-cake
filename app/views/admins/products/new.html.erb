@@ -1,0 +1,21 @@
+<h2>商品新規登録</h2>
+
+<%= form_with model:@product, url:"/admins/products", local:true do |f| %>
+  <div class="form-group">
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="form-group">
+    <%= f.label "商品名" %>
+    <%= f.text_area :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label "商品説明" %>
+    <%= f.text_field :introduction %>
+  </div>
+  <p>ジャンル　ぷる</p>
+  <p>税抜き価格　プル</p>
+  <p>販売ステータス</p>
+  <div class="form-group">
+    <%= f.submit "新規登録", class: 'btn btn-danger' %>
+  </div>
+<% end %>
