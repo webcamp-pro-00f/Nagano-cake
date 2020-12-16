@@ -42,7 +42,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_101055) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.boolean "is_active", default: true, null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,13 +54,14 @@ ActiveRecord::Schema.define(version: 2020_12_15_101055) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.string "postal_code"
-    t.string "address"
-    t.string "telephone_number"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "telephone_number", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_101055) do
     t.integer "product_id", null: false
     t.integer "amount", null: false
     t.integer "price", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_101055) do
     t.text "introduction", null: false
     t.string "image_id", null: false
     t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
