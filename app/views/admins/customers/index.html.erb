@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>会員一覧</h2>
+  <div class="row">
+    <table class="table table-striped table-hover mx-auto col-8">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <!--他にも書き方がある？-->
+          <td><%= customer.last_name %><%= customer.first_name %></td>
+          <td><%= customer.email %></td>
+          <!--わからない-->
+          <td><%= customer.is_deleted %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
