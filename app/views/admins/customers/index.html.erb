@@ -15,7 +15,11 @@
         <tr>
           <td><%= customer.id %></td>
           <!--他にも書き方がある？-->
-          <td><%= customer.last_name %><%= customer.first_name %></td>
+          <td>
+            <%= link_to admins_customer_path(customer) do %>
+              <%= customer.last_name %><%= customer.first_name %>
+            <% end %>
+          </td>
           <td><%= customer.email %></td>
           <!--わからない-->
           <td><%= customer.is_deleted %></td>
