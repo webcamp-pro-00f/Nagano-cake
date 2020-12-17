@@ -1,0 +1,9 @@
+<h2>ジャンル編集</h2>
+<%= form_with model:@category, url:admins_category_path(@category), local:true do |f| %>
+  <div class="form-group">
+    <%= f.label "ジャンル" %>
+    <%= f.text_field :name %>
+    <%= f.label "有効か無効" %>
+    <%= f.submit "追加", class: 'btn btn-success' %>
+  </div>
+<% end %>
