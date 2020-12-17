@@ -6,7 +6,7 @@ class Admins::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to admins_products_path
+    redirect_to  admins_product_path(product)
   end
 
   def index
@@ -30,7 +30,7 @@ class Admins::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :introduction, :image)
+    params.require(:product).permit(:name, :introduction, :image, :category_id, :price)
   end
 
 end
