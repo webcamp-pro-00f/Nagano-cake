@@ -2,7 +2,7 @@
 <%= form_with model: @category, url:admins_category_path(@category), local:true do |f| %>
   <div class="form-group">
     <%= f.label "ジャンル" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "プリン" %>
     <%= f.label "有効か無効" %>
     <%= f.submit "追加", class: 'btn btn-success' %>
   </div>
