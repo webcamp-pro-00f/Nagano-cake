@@ -3,6 +3,7 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(customer_params)
   end
 
   def update
