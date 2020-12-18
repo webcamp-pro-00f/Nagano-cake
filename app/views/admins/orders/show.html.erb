@@ -1,0 +1,64 @@
+<h2>注文履歴詳細</h2>
+
+<div>
+  <table>
+    <tr>
+      <th>購入者</th>
+      <td>購入者姓名記載予定</td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>宛名名前</td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td>方法記載予定</td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td>ステータス記載予定　更新ボタン</td>
+    </tr>
+  </table>
+</div>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_products.each do |order| %>
+      <tr>
+        <td><%= order.product.name %></td>
+        <td><%= order.price%></td>
+        <td><%= order.amount %></td>
+        <td>小計記載予定</td>
+        <td>
+          ステータス記載予定 更新ボタン
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <th>商品合計</th>
+    <td>金額記載予定</td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= order.delivery_price %></td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td><%= order.charge %></td>
+  </tr>
+</table>
