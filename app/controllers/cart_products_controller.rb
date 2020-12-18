@@ -1,9 +1,18 @@
 class CartProductsController < ApplicationController
+  # def create
+  #   @cart_item = CartItem.new(item_params)
+  #   @cart_item.user_id = current_user.id
+  #   #税抜の小計価格を設定
+  #   @cart_item.price = @cart_item.product.price * @cart_item.quantity
+  #   @cart_item.save
+  #   redirect_to cart_items_path
+  # end
+
   def create
-    product = Product.find(params[:id])
-    cart_product = current_user.cart_products.new(product_id: product.id)
+    cart_product = CartProduct.new(cart_product_params)
+    cart_product.customer_id = current_customer.id
     cart_product.save
-    redirect_to action: :index
+    redirect_to cart_products_path
   end
 
   def index
