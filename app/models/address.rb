@@ -5,5 +5,5 @@ class Address < ApplicationRecord
   def address_set
     self.postal_code + self.address + self.name
   end
-  
+
 end

@@ -11,18 +11,46 @@
         </tr>
       </thead>
       <tboady>
+        <%= @cart_products.each do |cart_product| %>
+          <tr>
+            <td><%= cart_product.product.name %></td>
+            <td><%= cart_product.product.price * 1.08 %></td>
+            <td><%= cart_product.amount %></td>
+            <td><%= cart_product.amount * cart_product.product.price * 1.08 %></td>
+          </tr>
+        <% end %>
         <!--カート内容-->
       </tboady>
     </table>
 
     <table class="payment table mx-auto col-2">
-      <tr><th>送料</th><td></td></tr>
-      <tr><th>商品合計</th><td></td></tr>
-      <tr><th>請求金額</th><td></td></tr>
+      <tr><th>送料</th><td><%= @order.delivery_price%></td></tr>
+      <tr><th>商品合計</th><td><%#= %></td></tr>
+      <tr><th>請求金額</th><td><%= @orders.charge %></td></tr>
     </table>
   </div>
   <div clas="row">
     <h5>支払方法</h5>
+    <% if params[:order][:payment_method] == "credit" %>
+      <%= "クレジットカード" %>
+    <% elsif params[:order][:payment_method] == "bank" %>
+      <%= "銀行振込" %>
+    <% end %>
     <h5>お届け先</h5>
+
+    <div class = "derivery_address" >
+      <%= @order.postal_code %>
+      <%= @order.address %>
+      <%= @order.name %>
+    </div>
+    <div class = "hiddon_field">
+      <%= form_with (model:[@order, Order_product.new]),method: :post, url: orders_path do |f| %>
+        <%= form.hidden_field :payment_method %>
+        <%= form.hidden_field :postal_code %>
+        <%= form.hidden_field :address %>
+        <%= form.hidden_field :name %>
+        <%= form.submit '送信する' %>
+      <% end %>
+    </div>
 
   </div>

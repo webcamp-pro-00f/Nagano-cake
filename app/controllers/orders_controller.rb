@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @addresses = Address.all
-    @new_address = Address.new
   end
 
   def create
@@ -16,13 +15,24 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @payment_method = params[:payment_method]
-    if params[:address_from] == "0"
-      @postal_code = current_customer.postal_code
-      @address = current_customer.address
-      @dear_name = current_customer.customer_full_name
-    elsif params[:address_form] == "1"
-    elsif params[:address_form] == "2"
+    @order = Order.new(order_params)
+    @order.payment_method = params[:order][:payment_method]
+    @cart_products = current_customer.cart_products
+
+    if params[:order][:address_form] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.customer_full_name
+    elsif params[:order][:address_form] == "1"
+      @address_id = params[:order][:order_address].to_i
+      @address = Address.find_by(id: @address_id)
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:address_form] == "2"
+      @order.postal_code = params[:postal_code]
+      @order.address = params[:address]
+      @order.name = params[:name]
     end
   end
 
