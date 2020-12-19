@@ -4,7 +4,9 @@
   <table>
     <tr>
       <th>購入者</th>
-      <td>購入者姓名記載予定</td>
+      <td><%= link_to admins_customer_path(customer) do %>
+        <%= @order.customer.first_name %><%= @order.customer.last_name %></td>
+      <% end %>
     </tr>
     <tr>
       <th>住所</th>
@@ -17,7 +19,7 @@
     <tr>
       <th>注文ステータス</th>
       <td>
-        <%= @order.payment_method %>
+        <%= f.collection_select(:status, @status, :id , :name) %>
         <%= link_to "更新", admins_order_path(order), method: :patch%>
       </td>
     </tr>
@@ -44,7 +46,7 @@
         <td><%= order.amount %></td>
         <td>小計記載予定</td>
         <td>
-          <%= order.making_status %>
+          <%= f.collection_select(:making_status, @status, :id, :name) %>
           <%= link_to "更新", admins_order_product_path(order_product), method: :patch%>
         </td>
       </tr>
