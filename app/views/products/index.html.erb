@@ -1,20 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2">
       <%= render 'category_search', categories: @categories %>
     </div>
-    <div class="col-9">
-      <div class="row">
-        <h2 class="col-3">商品一覧</h2><p class="col-2">(全<%= @products.count %>件)</p>
-      </div>
-      <% @products.each do |product| %>
-      <div>
-        <%= link_to product_path(product) do %>
-          <%= attachment_image_tag product, :image,:fill, 100, 100 %>
-          <p><%= product.name %>
-          <%= product.price %></p>
+    <div class="col-10">
+      <h3>
+      <% if @category.present? %>
+        <%= @category.name %>一覧<span>(全<%= @products.count %>件)</span>
+      <% else %>
+        商品一覧<span>(全<%= @products.count %>件)</span>
+      <% end %>
+      </h3>
+      <div class="d-flex flex-wrap">
+        <% @products.each do |product| %>
+        <div class="m-2 p-3 border">
+          <%= link_to product_path(product),class: "text-dark" do %>
+            <%= attachment_image_tag product, :image,:fill, 170, 130 %>
+            <p class="mt-2 mb-0 text-dark"><%= product.name %></p>
+            <p class="text-danger mb-0">￥<%= product.price %></p>
+          <% end %>
+        </div>
         <% end %>
       </div>
-      <% end %>
     </div>
+  </div>
 </div>
