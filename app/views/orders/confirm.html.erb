@@ -19,6 +19,7 @@
             <td><%= cart_product.amount %></td>
             <td><%= cart_product.amount * cart_product.product.price %></td>
           </tr>
+          <% sum += cart_product.product.price * cart_product.amount %>
         <% end %>
         <!--カート内容-->
       </tbody>
@@ -26,7 +27,7 @@
 
     <table class="payment table mx-auto col-2">
       <tr><th>送料</th><td><%= @order.delivery_price%></td></tr>
-      <tr><th>商品合計</th><td><%= @orde %></td></tr>
+      <tr><th>商品合計</th><td><%= sum %></td></tr>
       <tr><th>請求金額</th><td><%= @orders.charge %></td></tr>
     </table>
   </div>
