@@ -22,7 +22,7 @@
 
   <%= f.radio_button "address_form", 1 %>
   <%= f.label :order_address, "登録済住所から選択" %><br>
-  <%= f.select :order_address, @addresses.map{|o| [o.address_set, o.id]} %><br>
+  <%= f.select :order_address, @addresses.map{|o| [o.address_set, o.id]}, :include_blank => "住所を選択してください" %><br>
 
   <%= f.radio_button "address_form", 2 %>
   <%= f.label :order_address, "新しいお届け先" %><br>

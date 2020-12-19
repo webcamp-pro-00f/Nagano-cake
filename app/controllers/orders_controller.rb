@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
-    @addresses = Address.all
+    @addresses = Address.where(customer_id: current_customer.id)
   end
 
   def create
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method]
     @cart_products = current_customer.cart_products
-
+    @order_product = OrderProduct.new
     if params[:order][:address_form] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
