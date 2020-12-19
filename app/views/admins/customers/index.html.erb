@@ -13,7 +13,6 @@
       <tbody>
         <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.id %></td>
           <!--他にも書き方がある？-->
           <td>
             <%= link_to admins_customer_path(customer) do %>

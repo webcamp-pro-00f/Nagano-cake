@@ -3,7 +3,7 @@
     <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
   </div>
   <div class="row">
-      
+
     <%= form_with model:@customer,local:true,url: admins_customer_path(@customer) do |f| %>
      <table class="table table-borderless ">
       <tr>
@@ -32,7 +32,7 @@
         <th><%= f.text_field :telephone_number %></th>
       </tr>
     </table>
-     
+
 
       <div class="actions row">
         <%= f.submit class: 'btn btn-primary col-xs-12'%>
