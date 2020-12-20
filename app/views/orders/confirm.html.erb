@@ -11,24 +11,25 @@
         </tr>
       </thead>
       <tbody>
-        <% sum = 0 %>
+        <% total = 0 %>
         <% @cart_products.each do |cart_product| %>
           <tr>
             <td><%= cart_product.product.name %></td>
             <td><%= cart_product.product.price %></td>
             <td><%= cart_product.amount %></td>
-            <td><%= cart_product.amount * cart_product.product.price %></td>
+            <td><%= cart_product.subtotal %></td>
           </tr>
-          <% sum += cart_product.product.price * cart_product.amount %>
+          <!-- 合計計算 -->
+          <%  total += cart_product.subtotal %>
         <% end %>
-        <!--カート内容-->
       </tbody>
     </table>
-
+        <!-- 請求金額計算 -->
+        <% charge = total + @order.delivery_price %>
     <table class="payment table mx-auto col-2">
-      <tr><th>送料</th><td><%= @order.delivery_price%></td></tr>
-      <tr><th>商品合計</th><td><%= sum %></td></tr>
-      <tr><th>請求金額</th><td><%= @orders.charge %></td></tr>
+      <tr><th>送料</th><td><%= @order.delivery_price %></td></tr>
+      <tr><th>商品合計</th><td><%= total %></td></tr>
+      <tr><th>請求金額</th><td><%= charge %></td></tr>
     </table>
   </div>
   <div clas="row">
@@ -38,21 +39,20 @@
     <% elsif params[:order][:payment_method] == "bank" %>
       <%= "銀行振込" %>
     <% end %>
-    <h5>お届け先</h5>
 
+    <h5>お届け先</h5>
     <div class = "derivery_address" >
       <%= @order.postal_code %>
       <%= @order.address %>
       <%= @order.name %>
     </div>
-    <div class = "hidden_field">
-      <%= form_with model:[@order, @order_product], method: :post, url: orders_path, local: true do |f| %>
-        <%= form.hidden_field :payment_method %>
-        <%= form.hidden_field :postal_code %>
-        <%= form.hidden_field :address %>
-        <%= form.hidden_field :name %>
-        <%= form.submit '送信する' %>
-      <% end %>
-    </div>
-
+    <%= form_with model:@order, method: :post, url: orders_path, local: true do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :payment_method, :value => params[:order][:payment_method] %>
+      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :charge, :value => charge %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.submit '購入を確定する',class:"btn btn-success"%>
+    <% end %>
   </div>
