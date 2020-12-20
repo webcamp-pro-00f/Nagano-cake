@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'category_search', categories: @categories %>
+    </div>
+    <div class="col-9">
+      <h2>商品詳細</h2>
+      <%= attachment_image_tag @product, :image,:fill, 100, 100 %>
+        <%= @product.name %>
+        <%= @product.introduction %>
+        <%= @product.price %></p>
+      <%= form_with(model: @cart_product, url: cart_products_path, method: :post, local:true) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <!--上記の記述によりproduct_idに@productのidカラムの値を含ませる-->
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+          <%= f.submit "カートに入れる" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

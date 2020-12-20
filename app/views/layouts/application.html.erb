@@ -4,30 +4,14 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <nav>
-        <ul>
-    <% if customer_signed_in? %>
-      <li>会員</li>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-    <% elsif admin_signed_in? %>
-      <li>管理者</li>
-      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-    <% else %>
-      <li>ゲストユーザー</li>
-      <li><%= link_to "新規登録", new_customer_registration_path %></li>
-      <li><%= link_to "ログイン", new_customer_session_path %></li>
-    <% end %>
-        </ul>
-    </nav>
-  </header>
-
+    <%= render "layouts/header" %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
