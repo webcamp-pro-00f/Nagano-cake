@@ -14,7 +14,11 @@
           <%= f.hidden_field :product_id, value: @product.id %>
           <!--上記の記述によりproduct_idに@productのidカラムの値を含ませる-->
           <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
-          <%= f.submit "カートに入れる" %>
+          <% if customer_signed_in? %>
+            <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+          <% else %>
+            <%= link_to "カートに入れる", new_customer_registration_path, class:"btn btn-primary" %>
+          <% end %>
         </div>
       <% end %>
     </div>
