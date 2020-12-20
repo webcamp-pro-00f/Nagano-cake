@@ -4,10 +4,14 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
+    @customer = Customer.find(customer_params)
+=======
     @order = Order.find(params[:id])
     @order_product = @order.order_products
     @status = order.status.all
     @making_status = order.order_product.making_status.all
+>>>>>>> origin/views
   end
 
   def update

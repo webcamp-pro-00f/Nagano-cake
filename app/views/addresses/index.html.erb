@@ -12,11 +12,13 @@
 </div>
 <table class="address-list">
   <colgroup span="4"></colgroup>
-  <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+    </tr>
+  </thead>
   <% @addresses.each do |address| %>
   <tr>
     <td><%= address.postal_code %></td>
