@@ -3,14 +3,8 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   enum payment_method: {
-<<<<<<< HEAD
     credit: 0,
     bank: 1
-  }
-
-=======
-  credit: 0,
-  bank: 1
   }
 
   enum status: {
@@ -20,5 +14,4 @@ class Order < ApplicationRecord
   "発送準備中": 3,
   "発送済み": 4,
   }
->>>>>>> origin/views
 end
