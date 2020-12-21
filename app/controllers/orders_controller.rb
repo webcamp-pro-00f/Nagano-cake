@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def confirm
+  def confirmz
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method]
     @cart_products = current_customer.cart_products

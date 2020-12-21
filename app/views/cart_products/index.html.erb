@@ -16,19 +16,21 @@
         <tbaody>
           <% sum = 0 %>
           <% @cart_products.each do |cart_product| %>
+          <!--商品の税込単価を定義-->
+          <% cprice = converting_to_jpy(cart_product.product.price + (cart_product.product.price * @tax).ceil) %>
           <tr>
             <td><%= cart_product.product.name %></td>
-            <td><%= cart_product.product.price %></td>
+            <td><%= cprice.to_i %></td>
             <%= form_with model:cart_product, local:true do |f| %>
             <td>
               <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
               <%= f.submit "変更", class: 'btn btn-success' %>
             </td>
             <% end %>
-            <td><%= cart_product.product.price * cart_product.amount %></td>
+            <td><%= cprice.to_i * cart_product.amount %></td>
             <td><%= link_to "削除する", cart_product_path(cart_product), method: :delete, class:"btn btn-danger" %></td>
           </tr>
-          <% sum += cart_product.product.price * cart_product.amount %>
+          <% sum += cprice.to_i * cart_product.amount %>
           <% end %>
         </tbaody>
       </table>
