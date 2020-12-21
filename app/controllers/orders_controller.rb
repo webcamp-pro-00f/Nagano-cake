@@ -26,6 +26,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @product_price = 0
+    @order.order_products.each do |order|
+    @product_price += order.price * order.amount
+    end
   end
 
   def confirm

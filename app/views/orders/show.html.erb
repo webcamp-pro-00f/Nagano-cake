@@ -28,15 +28,17 @@
       <table>
         <tr>
           <th>商品合計</th>
-          <td>金額記載予定</td>
+          <td><%= @product_price %></td>
         </tr>
         <tr>
           <th>配送料</th>
           <td><%= @order.delivery_price %></td>
         </tr>
         <tr>
+
           <th>ご請求額</th>
-          <td><%= @order.charge %></td>
+          <% charge = @product_price + @order.delivery_price %>
+          <td><%= charge %></td>
         </tr>
       </table>
   </div>
@@ -54,12 +56,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_product.each do |order| %>
+        <% @order.order_products.each do |order| %>
           <tr>
             <td><%= order.product.name %></td>
             <td><%= order.price %></td>
-            <td><%= order.order_products.amount %></td>
-            <td>小計記載予定</td>
+            <td><%= order.amount %></td>
+            <td><%= order.price * order.amount %></td>
           </tr>
         <% end %>
       </tbody>
