@@ -2,7 +2,7 @@
 
 <p><strong>本日の注文件数</strong>
   <%= link_to admins_orders_path do %>
-    <%= Order.where("created_at >= ?", Date.today).count %>件
+    <%= @order %>件
   <% end %>
 </p>
 

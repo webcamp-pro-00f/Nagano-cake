@@ -1,4 +1,5 @@
 class Admins::HomesController < ApplicationController
-    def home
+    def top
+     @order = Order.where("created_at >= ?", Date.today).count
     end
 end

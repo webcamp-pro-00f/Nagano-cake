@@ -34,7 +34,7 @@
       </table>
         <%= f.submit '編集内容を保存する', class: 'btn btn-primary' %>
       <% end %>
-      <span><%=link_to "退会する", customers_out_path, class:"btn btn-danger" %></span>
+      <span><%=link_to "退会する", customers_out_path, data: { confirm: "本当に退会されますか？" },  class:"btn btn-danger" %></span>
     </div>
   </div>
 </div>
