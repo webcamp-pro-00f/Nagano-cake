@@ -4,8 +4,8 @@ class Order < ApplicationRecord
 
   enum payment_method: {
 
-  credit: 0,
-  bank: 1
+  "クレジットカード": 0,
+  "銀行振込": 1
   }
 
   enum status: {
