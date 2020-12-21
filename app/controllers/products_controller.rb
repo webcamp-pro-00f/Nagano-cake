@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  
+
   def index
-    @products = Product.all
+    @products = Product.page(params[:page])
     @categories = Category.all
     @tax = 0.08
     if params[:category_id].present?
@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       @products = @category.products
     end
   end
-  
+
 
   def show
     @tax = 0.08
