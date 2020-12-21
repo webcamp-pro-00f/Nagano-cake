@@ -25,15 +25,28 @@
       </tr>
       <tr>
         <th>住所</th>
-        <th><%= f.text_field :address %></th>
+        <th><%= f.text_field :address, size:60 %></th>
       </tr>
       <tr>
         <th>電話番号</th>
         <th><%= f.text_field :telephone_number %></th>
       </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= f.email_field :email %></th>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <th>
+          <%= f.radio_button :is_deleted, :false, checked: "checked" %>
+          <%= f.label :有効 %>
+        </th>
+        <th>
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :退会済 %>
+        </th>
+      </tr>
     </table>
-
-
       <div class="actions row">
         <%= f.submit class: 'btn btn-primary col-xs-12'%>
       </div>

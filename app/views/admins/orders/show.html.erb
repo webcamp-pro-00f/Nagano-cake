@@ -1,0 +1,70 @@
+<h2>注文履歴詳細</h2>
+
+<div>
+  <table>
+    <tr>
+      <th>購入者</th>
+      <td><%= link_to admins_customer_path(customer) do %>
+        <%= @order.customer.first_name %><%= @order.customer.last_name %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @order.name %></td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method %></td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td>
+        <%= f.collection_select(:status, @status, :id , :name) %>
+        <%= link_to "更新", admins_order_path(order), method: :patch%>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_product.each do |order| %>
+      <tr>
+        <td><%= order.product.name %></td>
+        <td><%= order.price%></td>
+        <td><%= order.amount %></td>
+        <td>小計記載予定</td>
+        <td>
+          <%= f.collection_select(:making_status, @status, :id, :name) %>
+          <%= link_to "更新", admins_order_product_path(order_product), method: :patch%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <th>商品合計</th>
+    <td>金額記載予定円</td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= order.delivery_price %>円</td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td><strong><%= order.charge %>円</strong></td>
+  </tr>
+</table>

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :orders, only: [:new, :create, :index, :show]
   get "orders/finish" => "orders#finish"
+  resources :orders, only: [:new, :create, :index, :show]
+
   post "orders/confirm" => "orders#confirm"
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
