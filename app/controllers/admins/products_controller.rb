@@ -14,6 +14,7 @@ class Admins::ProductsController < ApplicationController
   end
 
   def show
+    @tax = 0.08
     @product = Product.find(params[:id])
   end
 
@@ -30,7 +31,7 @@ class Admins::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :introduction, :image, :category_id, :price)
+    params.require(:product).permit(:name, :introduction, :image, :category_id, :price, :is_active)
   end
 
 end
