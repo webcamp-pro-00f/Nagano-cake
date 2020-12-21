@@ -17,17 +17,18 @@
           <% sum = 0 %>
           <% @cart_products.each do |cart_product| %>
           <!--税込価格定義-->
-          <% taxPrice = converting_to_jpy(cart_product.product.price + (cart_product.product.price * @tax).ceil) %>
+          <% taxPrice = cart_product.product.price + (cart_product.product.price * @tax).ceil %>
           <tr>
+            <%= converting_to_jpy(111111) %>
             <td><%= cart_product.product.name %></td>
-            <td><%= taxPrice %></td>
+            <td><%= converting_to_jpy(taxPrice) %></td>
             <%= form_with model:cart_product, local:true do |f| %>
             <td>
               <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
               <%= f.submit "変更", class: 'btn btn-success' %>
             </td>
             <% end %>
-            <td><%= taxPrice.to_i * cart_product.amount %></td>
+            <td><%= converting_to_jpy(taxPrice.to_i * cart_product.amount) %></td>
             <td><%= link_to "削除する", cart_product_path(cart_product), method: :delete, class:"btn btn-danger" %></td>
           </tr>
           <% sum += taxPrice.to_i * cart_product.amount %>
@@ -37,7 +38,7 @@
       <%= link_to "買い物を続ける", root_path, class:"btn btn-primary" %>
       <table class="table table-bordered">
         <tr>
-          <th>合計金額</th><td><%= sum %></td>
+          <th>合計金額</th><td><%= converting_to_jpy(sum) %></td>
         </tr>
       </table>
       <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success" %>
