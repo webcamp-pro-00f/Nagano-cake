@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       @order_product.save
     end
     @cart_products.delete_all
-    redirect_to orders_finish_path
+    redirect_to finish_path(order.id)
   end
 
   def index
