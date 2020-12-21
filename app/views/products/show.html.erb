@@ -1,26 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2">
       <%= render 'category_search', categories: @categories %>
     </div>
-    <div class="col-9">
-      <h2>商品詳細</h2>
-      <%= attachment_image_tag @product, :image,:fill, 100, 100 %>
-        <%= @product.name %>
-        <%= @product.introduction %>
-        <%= @product.price %></p>
-      <%= form_with(model: @cart_product, url: cart_products_path, method: :post, local:true) do |f| %>
-        <div class="form-group">
-          <%= f.hidden_field :product_id, value: @product.id %>
-          <!--上記の記述によりproduct_idに@productのidカラムの値を含ませる-->
-          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
-          <% if customer_signed_in? %>
-            <%= f.submit "カートに入れる", class:"btn btn-primary" %>
-          <% else %>
-            <%= link_to "カートに入れる", new_customer_registration_path, class:"btn btn-primary" %>
-          <% end %>
+    <div class="col-10 border">
+      <div class="row p-3">
+        <%= attachment_image_tag @product, :image, size: "400x300" %>
+        <div class="col-6">
+        <h3><%= @product.name %></h3>
+        <p style="height: 150px"><%= @product.introduction %></p>
+        <h5>￥<%= @product.price + (@product.price * @tax).ceil %><span>（税込）</span></p>
         </div>
-      <% end %>
+      </div>
+      <div class="row justify-content-end">
+        <%= form_with(model: @cart_product, url: cart_products_path, method: :post, local:true) do |f| %>
+          <div class="form-group mr-5">
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <!--上記の記述によりproduct_idに@productのidカラムの値を含ませる-->
+            <% if @product.is_active == true %>
+              <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10],include_blank: "個数選択" %>
+              <%= f.submit "カートに入れる" %>
+            <% else %>
+              売切れ中
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
