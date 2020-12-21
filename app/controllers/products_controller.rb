@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+
   def index
     @products = Product.all
     @categories = Category.all
@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       @products = @category.products
     end
   end
-  
+
 
   def show
     @tax = 0.08
