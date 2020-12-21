@@ -8,6 +8,7 @@ class CartProductsController < ApplicationController
   end
 
   def index
+    @tax = 0.08
     @cart_products = current_customer.cart_products
   end
 
