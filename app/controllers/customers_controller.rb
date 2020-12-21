@@ -19,8 +19,6 @@ class CustomersController < ApplicationController
   def hide
     customer = current_customer
     customer.update(is_deleted:true)
-    customer_cart = customer.cart_products.find_by(customer_id: current_customer.id)
-    customer_cart.delete
     reset_session #ユーザーをログアウト
     redirect_to root_path #ログアウト後にtop画面へ遷移
   end
