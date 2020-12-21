@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       @order_product.amount = cart_product.amount
       @order_product.save
     end
+    @cart_products.delete_all
     redirect_to orders_finish_path
   end
 
@@ -53,6 +54,7 @@ class OrdersController < ApplicationController
       @order.address = params[:address]
       @order.name = params[:name]
     end
+
   end
 
   def finish

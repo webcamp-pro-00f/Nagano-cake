@@ -22,6 +22,7 @@
     <%= f.text_field :price %>
   </div class="form-group">
   <p>販売ステータス</p>
+  　<%= f.select :is_active, [['販売中',true],['売り切れ',false]] %>
   <div class="form-group">
     <%= f.submit "変更を保存", class: 'btn btn-danger' %>
   </div>

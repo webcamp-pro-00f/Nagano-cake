@@ -22,6 +22,6 @@ class Admins::CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :is_active)
   end
 end
