@@ -26,11 +26,11 @@
 
   <%= f.radio_button "address_form", 2 %>
   <%= f.label :order_address, "新しいお届け先" %><br>
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)"%>
-    <%= text_field_tag :postal_code %><br>
-    <%= f.label :address, "住所"%>
-    <%= text_field_tag :address %><br>
-    <%= f.label :name, "宛名"%>
-    <%= text_field_tag :name %><br>
+    <%= f.label :postal_code, "郵便番号(ハイフンなし)"%><br>
+    <%= text_field_tag 'address[postal_code]' %><br>
+    <%= f.label :address, "住所"%><br>
+    <%= text_field_tag 'address[address]' %><br>
+    <%= f.label :name, "宛名"%><br>
+    <%= text_field_tag 'address[name]' %><br>
   <%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
 <% end %>
