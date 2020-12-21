@@ -16,6 +16,19 @@ class Admins::OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
+    if order.status == "入金確認"
+      order.order_products.each do |order_product|
+        order_product.making_status = 1
+        order_product.making_status.update(order_product_params)
+      end
+    elsif order.status == "発送済み"
+      order.order_products.each do |order_product|
+        order_product.making_status = "発送済み"
+        order_product.making_status.update
+      end
+    end
+
+
     order.update(order_params)
     redirect_to admins_order_path(order)
   end
