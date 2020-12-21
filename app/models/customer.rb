@@ -15,4 +15,8 @@ class Customer < ApplicationRecord
   def customer_full_name
     self.last_name + self.first_name
   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> ac982d15a085a1d99e09284a483e3e7afe01e7b2
 end
