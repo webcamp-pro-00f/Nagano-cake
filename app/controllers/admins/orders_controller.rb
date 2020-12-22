@@ -11,8 +11,8 @@ class Admins::OrdersController < ApplicationController
     @order_customer = @order.customer.id
     #合計金額計算
     @product_price = 0
-    @order_products.each do |order_product|
-      @product_price += order_product.price * order_product.amount
+    @order_product.each do |order|
+    @product_price += order.price * order.amount
     end
   end
 
