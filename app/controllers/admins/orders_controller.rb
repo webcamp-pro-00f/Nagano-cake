@@ -3,6 +3,10 @@ class Admins::OrdersController < ApplicationController
     @orders = Order.all
     @orders = Order.page(params[:page])
     @product_amount = 0
+    if params[:customer_id].present?
+      @customer = Customer.find(params[:customer_id])
+      @orders = @customer.orders.page(params[:page])
+    end
   end
 
   def show
