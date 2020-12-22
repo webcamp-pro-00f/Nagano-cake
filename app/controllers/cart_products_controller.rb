@@ -1,4 +1,5 @@
 class CartProductsController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     cart_product = CartProduct.new(cart_product_params)
