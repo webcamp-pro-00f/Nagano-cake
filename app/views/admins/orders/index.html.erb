@@ -23,3 +23,10 @@
   </tbody>
 </table>
 <%= paginate @orders %>
+
+<% if params[:customer_id].present? %>
+  <%= paginate @orders %>
+  <!--@products = @category.productsの＝から右半分を省略して記述-->
+<% else %>
+  <%= paginate @orders %>
+<% end %>
