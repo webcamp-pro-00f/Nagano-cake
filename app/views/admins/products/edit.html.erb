@@ -1,6 +1,7 @@
 <h2>商品編集</h2>
 
 <%= form_with model: @product, url: admins_product_path(@product), local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 
   <div class="form-group">
     <%= f.attachment_field :image %>

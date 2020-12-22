@@ -3,4 +3,11 @@ class Product < ApplicationRecord
   has_many :cart_products, dependent: :destroy
   has_many :order_products, dependent: :destroy
   attachment :image
+
+  validates :category_id, presence: true
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :image_id, presence: true
+  validates :price, presence: true
+  validates :is_active, presence: true
 end
