@@ -1,6 +1,5 @@
 <div class="container">
   <h2>商品一覧</h2>
-
   <div class="row justify-content-end m-2">
     <%= link_to new_admins_product_path do %>
       <button type="button" class="btn btn-secondary shadow rounded-circle border p-0" style="width:2rem;height:2rem;">＋</button>
@@ -23,7 +22,7 @@
           <tr>
             <td><%= product.id %></td>
             <td><%= link_to product.name, admins_product_path(product) %></td>
-            <td><%= product.price %></td>
+            <td><%= converting_to_jpy(product.price) %></td>
             <td><%= product.category.name %></td>
             <td>
               <% if product.is_active == true %>

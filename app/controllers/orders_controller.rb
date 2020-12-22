@@ -8,6 +8,14 @@ class OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
+    if params[:address_form] == 2
+      new_address = Address.new
+      new_address.customer_id = current_customer.id
+      new_address.postal_code = params[:order][:postal_code]
+      new_address.address = params[:order][:address]
+      new_address.name = params[:order][:name]
+      new_address.save
+    end
     @cart_products = current_customer.cart_products
     @cart_products.each do |cart_product|
       @order_product = OrderProduct.new
@@ -50,9 +58,13 @@ class OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:address_form] == "2"
-      @order.postal_code = params[:postal_code]
-      @order.address = params[:address]
-      @order.name = params[:name]
+      # 新規お届け先保存
+      @address = Address.new(address_params)
+      @address.customer_id = current_customer.id
+      @address.save
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
     end
 
   end
