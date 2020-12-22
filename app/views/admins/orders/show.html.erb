@@ -44,14 +44,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @order_product.each do |order| %>
+    <% @order_products.each do |order_product| %>
       <tr>
-        <td><%= order.product.name %></td>
-        <td><%= order.price%></td>
-        <td><%= order.amount %></td>
-        <td><%= order.price * order.amount %></td>
+        <td><%= order_product.product.name %></td>
+        <td><%= order_product.price%></td>
+        <td><%= order_product.amount %></td>
+        <td><%= order_product.price * order_product.amount %></td>
         <td>
-          <%= form_with model: order, url: admins_order_product_path(order), method: :patch, local: true do |f| %>
+          <%= form_with model: order_product, url: admins_order_product_path(order_product), method: :patch, local: true do |f| %>
             <%= f.select :making_status, ["製作不可","製作待ち","製作中","製作完了"] %>
             <%= f.submit "更新", class: 'btn btn-danger' %>
           <% end %>
