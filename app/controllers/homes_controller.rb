@@ -3,6 +3,7 @@ class HomesController < ApplicationController
     @products = Product.all
     @recommend = Product.limit(4)
     @categories = Category.all
+    @tax = TAX
   end
 
   def about

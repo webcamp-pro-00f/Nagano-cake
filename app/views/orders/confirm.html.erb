@@ -13,14 +13,16 @@
       <tbody>
         <% total = 0 %>
         <% @cart_products.each do |cart_product| %>
+        <!--小計の税込定義-->
+        <% taxPrice = (cart_product.subtotal * @tax).floor %>
           <tr>
             <td><%= cart_product.product.name %></td>
-            <td><%= cart_product.product.price %></td>
+            <td><%= converting_to_jpy((cart_product.product.price * @tax).floor) %></td>
             <td><%= cart_product.amount %></td>
-            <td><%= cart_product.subtotal %></td>
+            <td><%= converting_to_jpy(taxPrice) %></td>
           </tr>
           <!-- 合計計算 -->
-          <%  total += cart_product.subtotal %>
+          <%  total += taxPrice %>
         <% end %>
       </tbody>
     </table>
@@ -28,8 +30,8 @@
         <% charge = total + @order.delivery_price %>
     <table class="payment table mx-auto col-2">
       <tr><th>送料</th><td><%= @order.delivery_price %></td></tr>
-      <tr><th>商品合計</th><td><%= total %></td></tr>
-      <tr><th>請求金額</th><td><%= charge %></td></tr>
+      <tr><th>商品合計</th><td><%= converting_to_jpy(total) %></td></tr>
+      <tr><th>請求金額</th><td><%= converting_to_jpy(charge) %></td></tr>
     </table>
   </div>
   <div clas="row">
