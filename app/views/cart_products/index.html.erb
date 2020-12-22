@@ -17,9 +17,8 @@
           <% sum = 0 %>
           <% @cart_products.each do |cart_product| %>
           <!--税込価格定義-->
-          <% taxPrice = cart_product.product.price + (cart_product.product.price * @tax).ceil %>
+          <% taxPrice = (cart_product.product.price * @tax).floor %>
           <tr>
-            <%= converting_to_jpy(111111) %>
             <td><%= cart_product.product.name %></td>
             <td><%= converting_to_jpy(taxPrice) %></td>
             <%= form_with model:cart_product, local:true do |f| %>

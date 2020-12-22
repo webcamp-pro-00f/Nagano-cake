@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+    @tax = TAX
   end
 
   def show
