@@ -24,8 +24,13 @@
             </div>
           <% end %>
         <% end %>
-        <%= paginate @products %>
       </div>
+      <% if params[:category_id].present? %>
+        <%= paginate @products %>
+        <!--@products = @category.productsの＝から右半分を省略して記述-->
+      <% else %>
+        <%= paginate @products %>
+      <% end %>
     </div>
   </div>
 </div>
