@@ -44,7 +44,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @order_product.each do |order| %>
+    <% @order_products.each do |order| %>
     <!--商品単価の税込価格定義-->
     <% taxPrice = (order.price * @tax).floor %>
       <tr>

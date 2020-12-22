@@ -12,7 +12,7 @@ class Admins::OrdersController < ApplicationController
     @order_customer = @order.customer.id
     #合計金額計算
     @product_price = 0
-    @order_product.each do |order|
+    @order_products.each do |order|
     @product_price += (order.price * @tax).floor * order.amount
     end
 
