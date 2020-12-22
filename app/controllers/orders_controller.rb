@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+    @tax = TAX
   end
 
   def show
@@ -39,6 +40,7 @@ class OrdersController < ApplicationController
     @order.order_products.each do |order|
     @product_price += order.price * order.amount
     end
+    @tax = TAX
   end
 
   def confirm
@@ -66,7 +68,7 @@ class OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
-
+    @tax = TAX
   end
 
   def finish
