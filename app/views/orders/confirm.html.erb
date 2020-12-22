@@ -34,9 +34,9 @@
   </div>
   <div clas="row">
     <h5>支払方法</h5>
-    <% if params[:order][:payment_method] == "クレジットカード" %>
+    <% if params[:order][:payment_method] == "credit" %>
       <%= "クレジットカード" %>
-    <% elsif params[:order][:payment_method] == "銀行振込" %>
+    <% elsif params[:order][:payment_method] == "bank" %>
       <%= "銀行振込" %>
     <% end %>
 
