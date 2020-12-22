@@ -7,6 +7,7 @@ class Admins::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_product = @order.order_products
+    @order_customer = @order.customer.id
     #合計金額計算
     @product_price = 0
     @order_product.each do |order|
