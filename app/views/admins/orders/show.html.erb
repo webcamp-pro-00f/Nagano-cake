@@ -40,11 +40,13 @@
   </thead>
   <tbody>
     <% @order_product.each do |order| %>
+    <!--商品単価の税込価格定義-->
+    <% taxPrice = (order.price * @tax).floor %>
       <tr>
         <td><%= order.product.name %></td>
-        <td><%= order.price%></td>
+        <td><%= converting_to_jpy(taxPrice) %></td>
         <td><%= order.amount %></td>
-        <td><%= order.price * order.amount %></td>
+        <td><%= converting_to_jpy(taxPrice * order.amount) %></td>
         <td>
           <%= form_with model: order, url: admins_order_product_path(order), method: :patch, local: true do |f| %>
             <%= f.select :making_status, ["製作不可","製作待ち","製作中","製作完了"] %>
@@ -59,16 +61,16 @@
 <table>
   <tr>
     <th>商品合計</th>
-    <td><%= @product_price %>円</td>
+    <td><%= converting_to_jpy(@product_price) %>円</td>
   </tr>
   <tr>
     <th>送料</th>
-    <td><%= @order.delivery_price %>円</td>
+    <td><%= converting_to_jpy(@order.delivery_price) %>円</td>
   </tr>
   <tr>
     <th>請求金額合計</th>
       <% charge = @product_price + @order.delivery_price %>
-    <td><strong><%= charge %>円</strong></td>
+    <td><strong><%= converting_to_jpy(charge) %>円</strong></td>
   </tr>
 </table>
 

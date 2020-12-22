@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
-
+    @tax = TAX
   end
 
   def finish
