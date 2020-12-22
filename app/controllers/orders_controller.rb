@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
     @order.order_products.each do |order|
     @product_price += order.price * order.amount
     end
+    @tax = TAX
   end
 
   def confirm
