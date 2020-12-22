@@ -1,6 +1,7 @@
 class Admins::OrdersController < ApplicationController
   def index
     @orders = Order.all
+    @orders = Order.page(params[:page])
     @product_amount = 0
   end
 
@@ -8,6 +9,7 @@ class Admins::OrdersController < ApplicationController
     @tax = TAX
     @order = Order.find(params[:id])
     @order_product = @order.order_products
+    @order_customer = @order.customer.id
     #合計金額計算
     @product_price = 0
     @order_product.each do |order|
@@ -19,6 +21,12 @@ class Admins::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
+    if order.status == "入金確認"
+      order.order_products.each do |order_product|
+        order_product.making_status = "製作待ち"
+        order_product.save
+      end
+    end
     redirect_to admins_order_path(order)
   end
 
@@ -28,5 +36,7 @@ class Admins::OrdersController < ApplicationController
     params.require(:order).permit(:status)
   end
 
-
+  def order_product_params
+    params.require(:order_product).permit(:making_status)
+  end
 end

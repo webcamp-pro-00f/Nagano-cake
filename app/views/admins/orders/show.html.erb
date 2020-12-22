@@ -1,20 +1,25 @@
-<h2>注文履歴詳細</h2>
+<h2>注文履歴詳細</h2></br>
 
 <div>
   <table>
     <tr>
       <th>購入者</th>
-      <td><%= link_to admins_order_path(@order) do %>
-        <%= @order.customer.first_name %><%= @order.customer.last_name %>
-      <% end %></td>
+      <td><%= link_to admins_customer_path(@order_customer) do %>
+            <%= @order.name %>
+          <% end %></td>
     </tr>
     <tr>
-      <th>住所</th>
-      <td><%= @order.name %></td>
+      <th>配送先</th>
+      <td>
+        〒<%= @order.address_set %></br>
+        <%= @order.name %>
+      </td>
     </tr>
     <tr>
       <th>支払方法</th>
-      <td><%= @order.payment_method %></td>
+      <td>
+        <%= @order.payment_method_text %>
+      </td>
     </tr>
     <tr>
       <th>注文ステータス</th>
@@ -73,5 +78,3 @@
     <td><strong><%= converting_to_jpy(charge) %>円</strong></td>
   </tr>
 </table>
-
-

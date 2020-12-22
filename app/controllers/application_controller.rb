@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope) # ログアウト後に遷移
-    if resource_or_scope == :customer
+     if resource_or_scope == :customer
       root_path
     else
       new_admin_session_path

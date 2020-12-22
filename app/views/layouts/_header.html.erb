@@ -9,7 +9,7 @@
       <div>
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li>ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！</li>
+          <li>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</li>
           <li><%= link_to "マイページ", customers_path, class:"btn btn-info" %></li>
           <li><%= link_to "商品一覧", products_path, class:"btn btn-info" %></li>
           <li><%= link_to "カート", cart_products_path, class:"btn btn-info" %></li>
