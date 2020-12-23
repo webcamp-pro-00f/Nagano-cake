@@ -1,8 +1,16 @@
 class Admins::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @orders = Order.all
     @orders = Order.page(params[:page])
     @product_amount = 0
+    if params[:customer_id].present?
+      @customer = Customer.find(params[:customer_id])
+      @orders = @customer.orders.page(params[:page])
+    end
+    @key = params[:key]
+    @today_order = Order.where("created_at >= ?", Date.today)
   end
 
   def show
