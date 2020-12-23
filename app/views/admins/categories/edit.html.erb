@@ -2,6 +2,7 @@
   <h4 style="margin: 50px;">ジャンル編集</h4>
   <div class="row m-5">
     <%= form_with model: @category, url:admins_category_path(@category), local:true do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
       <div class="form-group">
         <%= f.label "ジャンル" %>
         <%= f.text_field :name, placeholder: "プリン" %>
