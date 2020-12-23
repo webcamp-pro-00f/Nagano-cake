@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8  profile-edit">
       <h4>登録情報編集</h4>
       <%= form_with model:@customer, url: "/customers", local:true do |f| %>
-      <table class="form-group">
+      <table class="table-borderless">
         <tr>
           <th>名前</th>
-          <td>(姓)<%= f.text_field :last_name %></td>
-          <td>(名)<%= f.text_field :first_name %></td>
+          <td><%= f.text_field :last_name, placeholder:"(姓)"%></td>
+          <td><%= f.text_field :first_name, placeholder:"(名)" %></td>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <td>(セイ)<%= f.text_field :last_name_kana %></td>
-          <td>(メイ)<%= f.text_field :first_name_kana %></td>
+          <td><%= f.text_field :last_name_kana, placeholder:"(セイ)" %></td>
+          <td><%= f.text_field :first_name_kana, placeholder:"(メイ)" %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
@@ -32,9 +32,11 @@
           <td></td>
         </tr>
       </table>
-        <%= f.submit '編集内容を保存する', class: 'btn btn-primary' %>
+      <div class="form-btn">
+        <span><%= f.submit '編集内容を保存する', class: 'btn btn-primary' %></span>
+        <span><%=link_to "退会する", customers_out_path, data: { confirm: "本当に退会されますか？" },  class:"btn btn-danger" %></span>
+      </div>
       <% end %>
-      <span><%=link_to "退会する", customers_out_path, data: { confirm: "本当に退会されますか？" },  class:"btn btn-danger" %></span>
     </div>
   </div>
 </div>
