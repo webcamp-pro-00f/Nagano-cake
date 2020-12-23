@@ -1,36 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <%= render 'category_search', categories: @categories %>
-    </div>
-    <div class="col-9">
-
-      <h3>
-      <% if @category.present? %>
-        <%= @category.name %>一覧<span>(全<%= @products.count %>件)</span>
-      <% else %>
-        商品一覧<span>(全<%= @products.count %>件)</span>
-      <% end %>
-      </h3>
-      <div class="d-flex flex-wrap">
-        <% @products.each do |product| %>
-          <% if product.category.is_active == true %>
-            <div class="m-2 p-3 border card" style="width: 11rem;">
-              <%= link_to product_path(product),class: "text-dark" do %>
-                <%= attachment_image_tag product, :image,:fill, 170, 130 , class: "card-img-top"%>
-                <p class="mt-2 mb-0 text-dark"><%= product.name %></p>
-                <p class="text-danger mb-0">￥<%= converting_to_jpy((product.price * @tax).floor) %></p>
+<div class= "product-index p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= render 'category_search', categories: @categories %>
+      </div>
+      <div class="col-9">
+        <h3 class=" text-center product-index-title shadow-sm ">
+        <% if @category.present? %>
+          <%= @category.name %>一覧<span>(全<%= @products.count %>件)</span>
+        <% else %>
+          商品一覧<span>(全<%= @products.count %>件)</span>
+        <% end %>
+        </h3>
+        <div class="product-index-img p-3">
+          <div class="d-flex flex-wrap">
+            <% @products.each do |product| %>
+              <% if product.category.is_active == true %>
+                <div class="m-2 p-3 border card shadow" style="width: 11rem;">
+                  <%= link_to product_path(product),class: "text-dark" do %>
+                    <div class="top-recommend-product-img">
+                      <%= attachment_image_tag product, :image,:fill, 170, 130 , class: "card-img-top"%>
+                    </div>
+                    <p class="mt-2 mb-0 text-dark"><%= product.name %></p>
+                    <p class="text-danger mb-0">￥<%= converting_to_jpy((product.price * @tax).floor) %></p>
+                  <% end %>
+                </div>
               <% end %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% if params[:category_id].present? %>
+          <%= paginate @products %>
+          <!--@products = @category.productsの＝から右半分を省略して記述-->
+        <% else %>
+          <%= paginate @products %>
         <% end %>
       </div>
-      <% if params[:category_id].present? %>
-        <%= paginate @products %>
-        <!--@products = @category.productsの＝から右半分を省略して記述-->
-      <% else %>
-        <%= paginate @products %>
-      <% end %>
     </div>
   </div>
 </div>

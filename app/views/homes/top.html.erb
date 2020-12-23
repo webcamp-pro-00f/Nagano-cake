@@ -1,31 +1,37 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <%= render 'products/category_search', categories: @categories %>
-    </div>
-    <div class="col-9">
-      <div class="main_vidual">
-        <p>
-          ようこそ、NaganoCakeへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。<br>
-        </p>
+<div class= "home-top p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= render 'products/category_search', categories: @categories %>
       </div>
-      <h2>オススメ商品</h2>
-      <div class="d-flex flex-wrap">
-        <% @recommend.each do |product| %>
-        <div class="m-2 p-3 border recommend-product card" style="width: 11rem;">
-          <%= link_to product_path(product),class: "text-dark" do %>
-            <%= attachment_image_tag product, :image,:fill, 170, 130 , class: "card-img-top"%>
-            <p class="mt-2 mb-0 text-dark"><%= product.name %></p>
-            <p class="text-danger mb-0">￥<%= converting_to_jpy((product.price * @tax).floor) %></p>
+      <div class="col-9">
+        <div class="main_vidual">
+          <p class="main-vidual-text text-center text-light">
+            ようこそ、NaganoCakeへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。<br>
+          </p>
+        </div>
+        <div class="row mt-5 mb-2">
+          <h2 class="text-light">オススメ商品</h2>
+        </div>
+        <div class="d-flex flex-wrap row">
+          <% @recommend.each do |product| %>
+          <div class="m-2 p-3 border recommend-product card shadow" style="width: 11rem;">
+            <%= link_to product_path(product),class: "text-dark" do %>
+              <div class="top-recommend-product-img">
+                <%= attachment_image_tag product, :image,:fill, 170, 130 , class: "card-img-top"%>
+              </div>
+              <p class="mt-2 mb-0 text-dark"><%= product.name %></p>
+              <p class="text-danger mb-0">￥<%= converting_to_jpy((product.price * @tax).floor) %></p>
+            <% end %>
+          </div>
           <% end %>
         </div>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to 'もっと見る>',  products_path %>
+        <div class="row justify-content-end mr-5">
+          <h4><%= link_to 'もっと見る>',  products_path, class: "text-light" %></h4>
+        </div>
       </div>
     </div>
   </div>
