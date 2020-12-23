@@ -4,9 +4,13 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to  admins_product_path(product)
+    # product = Product.new(product_params)
+    @product = Product.new(product_params)
+    if @product.save
+  　   redirect_to  admins_product_path(@product)
+    else
+      render "new"
+    end
   end
 
   def index
@@ -23,9 +27,12 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to  admins_product_path(product)
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to  admins_product_path(@product)
+    else
+      render "edit"
+    end
   end
 
   private

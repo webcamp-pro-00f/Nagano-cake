@@ -5,6 +5,7 @@
   <div class="row">
 
     <%= form_with model:@customer,local:true,url: admins_customer_path(@customer) do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
      <table class="table table-borderless ">
       <tr>
         <th>会員ID</th>
