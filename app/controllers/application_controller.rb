@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
        :address,
        :telephone_number
     ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:encrypted_password])
   end
 
 

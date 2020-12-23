@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     delete 'customers/sign_out' => 'customers/sessions#destroy', as: 'destroy_customer_session'
     get 'customers/sign_up' => 'customers/registrations#new', as: 'new_customer_registration'
     post 'customers' => 'customers/registrations#create', as: 'customer_registration'
+    get 'customers/password/edit' => 'customers/registrations#edit', as: 'edit_customer_password'
+    patch 'customers/password' => 'customers/registrations#update', as: 'update_customer_password'
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
     post 'customers/password' => 'customers/passwords#create', as: 'create_customer_password'
-    get 'customers/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
-    patch 'customers/password' => 'customers/passwords#update', as: 'update_customer_password'
   end
 
   root "homes#top"
