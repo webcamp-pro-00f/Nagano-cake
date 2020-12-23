@@ -1,36 +1,40 @@
-<header>
-  <nav class="navbar navbar-expand-lg bg-light">
+<header class="header_area">
+  <nav class="navbar bg-light bg-transparent ">
     <div class="container">
-      <% if admin_signed_in? %>
-        <%= link_to "Nagano Cake", admins_root_path %>
-      <% else %>
-        <%= link_to "Nagano Cake", root_path %>
-      <% end %>
+      <div class="logo">
+        <% if admin_signed_in? %>
+          <%= link_to "Nagano Cake", admins_root_path, class:"text-white" %>
+        <% else %>
+          <%= link_to "Nagano Cake", root_path, class:"text-white"  %>
+        <% end %>
+      </div>
       <div>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar ml-auto">
         <% if customer_signed_in? %>
-          <li>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</li>
-          <li><%= link_to "マイページ", customers_path, class:"btn btn-info" %></li>
-          <li><%= link_to "商品一覧", products_path, class:"btn btn-info" %></li>
-          <li><%= link_to "カート", cart_products_path, class:"btn btn-info" %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-info" %></li>
+          <li class="header_text text-white user_name">ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</li>
+          <li class="header_text"><%= link_to "マイページ", customers_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "商品一覧", products_path, class:"text-white"%></li>
+          <li class="header_text"><%= link_to "カート", cart_products_path, class:"text-white"%></li>
+          <li class="header_text"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"text-white"%></li>
         <% elsif admin_signed_in? %>
 
-          <li><%= link_to "商品一覧", admins_products_path, class:"btn btn-info" %></li>
+          <li class="header_text"><%= link_to "商品一覧", admins_products_path, class:"text-white" %></li>
 
-          <li><%= link_to "会員一覧", admins_customers_path, class:"btn btn-info" %></li>
-          <li><%= link_to "注文履歴一覧", admins_orders_path, class:"btn btn-info" %></li>
-          <li><%= link_to "ジャンル一覧", admins_categories_path, class:"btn btn-info" %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-info" %></li>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <li class="header_text"><%= link_to "会員一覧", admins_customers_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "注文履歴一覧", admins_orders_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "ジャンル一覧", admins_categories_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-white" %></li>
+            <div class="searchbox_area">
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <i class="fas fa-search"></i>
+              </form>
+            </div>
         <% else %>
-          <li><%= link_to "About", about_path, class:"btn btn-info" %></li>
-          <li><%= link_to "商品一覧", products_path, class:"btn btn-info" %></li>
-          <li><%= link_to "新規登録", new_customer_registration_path, class:"btn btn-info" %></li>
-          <li><%= link_to "ログイン", new_customer_session_path, class:"btn btn-info" %></li>
+          <li class="header_text"><%= link_to "About",about_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "商品一覧",products_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "新規登録",new_customer_session_path, class:"text-white" %></li>
+          <li class="header_text"><%= link_to "ログイン",customer_session_path, class:"text-white" %></li>
         <% end %>
         </ul>
       </div>

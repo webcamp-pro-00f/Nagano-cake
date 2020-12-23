@@ -1,6 +1,7 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+<<<<<<< HEAD
 * {
   font-family: "Sawarabi Mincho";
 }
@@ -29,4 +30,15 @@
 
 .top-recommend-product-img {
   height: 120px;
+=======
+.about-text{
+  padding-top: 10px;
+}
+
+.about-backimage {
+  background-image: url("/images/patisserie.jpg");
+  height: 450px;
+  background-size:cover;
+  background-position: bottom center;
+>>>>>>> origin/last_views
 }
