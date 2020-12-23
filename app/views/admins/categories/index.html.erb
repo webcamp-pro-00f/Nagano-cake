@@ -4,7 +4,8 @@
   </div>
   <div class="row mt-5">
     <%= form_with model:@category, url: admins_categories_path, local:true do |f| %>
-      <div class="form-group">
+    <%= render "layouts/error_messages", model: f.object %>
+    <div class="form-group">
         <%= f.label "ジャンル" %>
         <%= f.text_field :name %>
         <%= f.radio_button :is_active, :true %>
