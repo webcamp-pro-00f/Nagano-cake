@@ -9,6 +9,8 @@ class Admins::OrdersController < ApplicationController
       @customer = Customer.find(params[:customer_id])
       @orders = @customer.orders.page(params[:page])
     end
+    @key = params[:key]
+    @today_order = Order.where("created_at >= ?", Date.today)
   end
 
   def show
