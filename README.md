@@ -1,8 +1,9 @@
 # README
 
 ## NaganoCake  
+**Ruby on Railsを使用したWEBアプリケーション（ECサイト）**  
 
-### 概要
+## 概要
 **このアプリケーションは下記の擬似要件を元に作成されたECサイトです。**   
 &emsp;長野県にある小さな洋菓子店「ながのCAKE」の商品を通販用に作成  
 &emsp;煩雑化しつつあった情報管理の改善のため、管理機能を含んだ当ECサイトの開設に至る 
@@ -22,19 +23,20 @@
 ・注文を受けた商品の制作ステータスが全て「制作完了」の状態に更新された場合、    
 &emsp;&emsp;注文ステータスを「発送準備中」に自動更新する  
 
-### 仕様
+## 仕様
+**使用言語**
 * HTML&CSS
 * Ruby
 * Javascript
 * フレームワーク
   * Ruby on Rails version: 5.2.4  
-  
-* added-gem  
-  * gem 'devise'  
-  * gem "refile", require: "refile/rails", github: 'manfe/refile'  
-  * gem "refile-mini_magick"  
-  * gem 'kaminari','~> 1.2.1'  
-  * gem 'bootstrap', '~> 4.5'  
-  * gem 'jquery-rails'  
-  * gem 'font-awesome-sass', '~> 5.13'
-  
+
+**使用したgem**   
+* gem 'devise'  
+* gem "refile", require: "refile/rails", github: 'manfe/refile'  
+* gem "refile-mini_magick"  
+* gem 'kaminari','~> 1.2.1'  
+* gem 'bootstrap', '~> 4.5'  
+* gem 'jquery-rails'  
+* gem 'font-awesome-sass', '~> 5.13'
+
