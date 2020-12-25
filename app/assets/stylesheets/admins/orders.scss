@@ -4,3 +4,25 @@
 .order-show-title {
   margin: 40px;
 }
+.costomer-label {
+  margin: 15px;
+}
+
+.payment-box {
+  position: relative;
+}
+.payment-table {
+  margin-left: 40px;
+  position: absolute;
+  bottom: 0;
+}
+.payment-label {
+  padding-right: 30px;
+}
+.payment-amount {
+  text-align: right;
+}
+#order_product_making_status {
+  width: 120px;
+  margin-right: 15px;
+}
