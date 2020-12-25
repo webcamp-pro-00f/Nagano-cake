@@ -1,18 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8  profile-edit">
+    <div class="col-md-10  profile-edit">
       <h4>登録情報編集</h4>
       <%= form_with model:@customer, url: "/customers", local:true do |f| %>
       <table class="table-borderless">
         <tr>
           <th>名前</th>
-          <td><%= f.text_field :last_name, placeholder:"(姓)"%></td>
-          <td><%= f.text_field :first_name, placeholder:"(名)" %></td>
+          <td>
+            <%= f.text_field :last_name, placeholder:"(姓)"%>
+            <%= f.text_field :first_name, placeholder:"(名)" %>
+          </td>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <td><%= f.text_field :last_name_kana, placeholder:"(セイ)" %></td>
-          <td><%= f.text_field :first_name_kana, placeholder:"(メイ)" %></td>
+          <td>
+            <%= f.text_field :last_name_kana, placeholder:"(セイ)" %>
+            <%= f.text_field :first_name_kana, placeholder:"(メイ)" %>
+          </td>
         </tr>
         <tr>
           <th>メールアドレス</th>
@@ -24,7 +28,7 @@
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= f.text_field :address %></td>
+          <td><%= f.text_field :address, size:41 %></td>
         </tr>
         <tr>
           <th>電話番号</th>
