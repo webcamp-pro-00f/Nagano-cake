@@ -8,11 +8,12 @@
 
 .product-index-img {
   background-color: rgba(188,221,255,0.5);
+  min-height: 510px;
 }
 
-.product-index {
-  min-height: 600px;
-}
+// .product-index {
+//   min-height: 600px;
+// }
 
 .product-index-title {
   color: rgba(188,221,255,0.9);
@@ -22,6 +23,7 @@
 
 .product-show {
   background-color: rgba(188,221,255,0.5);
+  min-height: 670px;
 }
 
 .product_title{

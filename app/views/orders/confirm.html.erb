@@ -1,8 +1,10 @@
-<div class="container">
-  <h5>注文情報確認</h5>
+<div class="container confirm-height">
+  <div class="row mt-5 ml-5 mb-3">
+    <h4 class="order-input-head">注文情報確認</h4>
+  </div>
   <div class="row">
-    <table class="products_confirm table table-striped table-hover mx-auto col-6">
-      <thead>
+    <table class="products_confirm table table-hover mx-auto col-8 table-bordered">
+      <thead class="confirm-color">
         <tr>
           <td>商品名</td>
           <td>単価(税込)</td>
@@ -28,7 +30,7 @@
     </table>
         <!-- 請求金額計算 -->
         <% charge = total + @order.delivery_price %>
-    <table class="payment table mx-auto col-2">
+    <table class="payment table mx-auto col-2 table-bordered">
       <tr><th>送料</th><td><%= @order.delivery_price %></td></tr>
       <tr><th>商品合計</th><td><%= converting_to_jpy(total) %></td></tr>
       <tr><th>請求金額</th><td><%= converting_to_jpy(charge) %></td></tr>
@@ -55,6 +57,7 @@
       <%= f.hidden_field :address, :value => @order.address %>
       <%= f.hidden_field :charge, :value => charge %>
       <%= f.hidden_field :name, :value => @order.name %>
-      <%= f.submit '購入を確定する',class:"btn btn-success"%>
+      <%= f.submit '購入を確定する',class:"btn btn-success mt-5"%>
     <% end %>
   </div>
+</div>
