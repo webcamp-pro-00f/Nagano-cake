@@ -1,5 +1,8 @@
 # README
 
+#ER図
+[ER図　.pdf](https://github.com/webcamp-pro-00f/Nagano-cake/files/5742799/ER.pdf)
+
 ## NaganoCake  
 **Ruby on Railsを使用したWEBアプリケーション（ECサイト）**  
 
