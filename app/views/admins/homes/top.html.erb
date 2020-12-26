@@ -1,3 +1,19 @@
-<h2>管理者画面</h2>
-
-<p><strong>本日の注文件数</strong><%= link_to  "〇件",  admins_orders_path %></p>
+<div class="container">
+  <div class="row">
+    <h4 class="title", style="margin-top: 40px; background-color : #BCDDFF; padding: 0 15px;">管理者画面</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4 style="margin-top: 70px;">
+        <strong>本日の注文件数</strong>
+      </h4>
+    </div>
+    <div class="col-md-8">
+      <%= link_to admins_orders_path(key: "today") do %>
+        <h4 style="margin-top: 70px;">
+          <%= @order %>件
+        </h4>
+      <% end %>
+    </div>
+  </div>
+</div>

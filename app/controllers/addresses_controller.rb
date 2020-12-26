@@ -1,15 +1,20 @@
 class AddressesController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = Address.where(customer_id: current_customer.id)
   end
 
   def create
+    @addresses = Address.where(customer_id: current_customer.id)
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to '/addresses'
+    if @address.save
+      redirect_to '/addresses'
+    else
+      render "index"
+    end
   end
 
   def edit
@@ -18,8 +23,11 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
-    redirect_to '/addresses'
+    if @address.update(address_params)
+      redirect_to '/addresses'
+    else
+      render "edit"
+    end
   end
 
   def destroy

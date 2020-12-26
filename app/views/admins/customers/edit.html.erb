@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+    <h4 class="title"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
   </div>
   <div class="row">
 
     <%= form_with model:@customer,local:true,url: admins_customer_path(@customer) do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
      <table class="table table-borderless ">
       <tr>
         <th>会員ID</th>
@@ -13,30 +14,42 @@
       </tr>
       <tr>
         <th>氏名</th>
-        <th><%= f.text_field :last_name %>  <%= f.text_field :first_name %></th>
+        <th><%= f.text_field :last_name, size: 15, class: "form_class" %>  <%= f.text_field :first_name, size: 15, class: "form_class" %></th>
       </tr>
       <tr>
         <th>フリガナ</th>
-        <th><%= f.text_field :last_name_kana %>  <%= f.text_field :first_name_kana %></th>
+        <th><%= f.text_field :last_name_kana, size: 15, class: "form_class" %>  <%= f.text_field :first_name_kana, size: 15, class: "form_class" %></th>
       </tr>
       <tr>
         <th>郵便番号</th>
-        <th><%= f.text_field :postal_code %></th>
+        <th><%= f.text_field :postal_code, class: "form_class" %></th>
       </tr>
       <tr>
         <th>住所</th>
-        <th><%= f.text_field :address %></th>
+        <th><%= f.text_field :address, size:55, class: "form_class" %></th>
       </tr>
       <tr>
         <th>電話番号</th>
-        <th><%= f.text_field :telephone_number %></th>
+        <th><%= f.text_field :telephone_number, size:30, class: "form_class" %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= f.email_field :email, size:30, class: "form_class" %></th>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <th>
+          <%= f.radio_button :is_deleted, :false, checked: "checked" %>
+          <%= f.label :有効, class: "status" %>
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :退会済み, class: "status" %>
+        </th>
       </tr>
     </table>
-
-
-      <div class="actions row">
-        <%= f.submit class: 'btn btn-primary col-xs-12'%>
+      <div class="button">
+        <%= f.submit '変更を保存する', class: 'btn btn-success col-xs-12'%>
       </div>
     <% end %>
+    </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class CartProductsController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     cart_product = CartProduct.new(cart_product_params)
@@ -8,6 +9,7 @@ class CartProductsController < ApplicationController
   end
 
   def index
+    @tax = TAX
     @cart_products = current_customer.cart_products
   end
 

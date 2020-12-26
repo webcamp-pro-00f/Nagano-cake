@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(current_customer.id)
   end
@@ -17,6 +19,10 @@ class CustomersController < ApplicationController
   end
 
   def hide
+    customer = current_customer
+    customer.update(is_deleted:true)
+    reset_session #ユーザーをログアウト
+    redirect_to root_path #ログアウト後にtop画面へ遷移
   end
 
   private

@@ -1,3 +1,41 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pagination {
+  justify-content: center;
+}
+
+.customers_login_head {
+  margin: 60px 0 50px 120px;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+.login-btn{
+  margin-left: 120px;
+}
+
+.customers_login_form_tr{
+  margin-bottom: 30px;
+}
+
+.customers_login_form {
+  width: 500px;
+}
+.foget-password {
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: right;
+}
+.new_customers_login_head {
+  margin: 30px 0 10px 120px;
+  font-size: 16px;
+  border-radius: 20px;
+}
+.new-customer {
+  margin: 20px 0 0 170px;
+}
+.registration {
+  margin-right: 10px;
+}

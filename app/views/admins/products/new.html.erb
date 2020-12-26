@@ -1,27 +1,38 @@
-<h2>商品新規登録</h2>
-
-<%= form_with model: @product ,url: admins_products_path, local: true do |f| %>
-  <div class="form-group">
-    <%= f.attachment_field :image %>
+<div class="container boeder">
+  <h4 style="margin: 40px;">商品新規登録</h4>
+  <div class="row">
+    <%= form_with model: @product ,url: admins_products_path, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div>
+        <%= f.attachment_field :image %>
+      </div>
+      <div>
+        <table class="table table-borderless">
+          <tr class="form-group">
+            <th><%= f.label "商品名" %></th>
+            <th><%= f.text_field :name, class: "form-control" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label "商品説明" %></th>
+            <th><%= f.text_area :introduction, class: "form-control" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label "ジャンル" %></th>
+            <th class="form-control"><%= f.collection_select(:category_id, Category.all, :id, :name) %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label "税抜価格" %></th>
+            <th><%= f.text_field :price, class: "form-control" %>円</th>
+          </tr>
+          <tr class="form-group">
+          　<th><%= f.label "販売ステータス" %></th>
+            <th><%= f.select :is_active, [['販売中',true],['売り切れ',false]], class: "form-control" %></th>
+          </tr>
+        </table>
+      </div>
+      <div class="form-group">
+        <%= f.submit "新規登録", class: 'btn btn-danger' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label "商品名" %>
-    <%= f.text_area :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label "商品説明" %>
-    <%= f.text_field :introduction %>
-  </div>
-  <div>
-    <%= f.label "ジャンル" %>
-    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-  </div>
-  <div>
-  <p>税抜価格</p>
-    <%= f.text_field :price %>
-  </div>
-  <p>販売ステータス</p>
-  <div class="form-group">
-    <%= f.submit "新規登録", class: 'btn btn-danger' %>
-  </div>
-<% end %>
+</div>

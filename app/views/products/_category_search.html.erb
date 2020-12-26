@@ -1,15 +1,17 @@
-<table class="table">
+<table class="table table-borderless table-hover category_table text-info">
   <thead>
     <tr>
       <th>ジャンル検索</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <% categories.each do |category| %>
     <tr>
+      <% if category.is_active == true %>
       <td>
         <%= link_to category.name, products_path(category_id: category.id), class: "text-secondary" %><br>
       </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

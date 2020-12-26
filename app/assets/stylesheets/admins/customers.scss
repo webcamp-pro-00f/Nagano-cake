@@ -1,3 +1,41 @@
 // Place all the styles related to the admins::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title {
+  margin: 40px;
+}
+
+.customer_id {
+  margin-right: 20px;
+}
+
+.customer_flag {
+  color: #FFF;
+  font-size: 13px;
+  border-radius:  4px;
+  border: 1px solid;
+  border-color: #000;
+}
+
+.false {
+  padding: 0 10px;
+  background-color: #5cb85c;
+}
+
+.true {
+  padding: 0 10px;
+  background-color: #d9534f;
+}
+
+.form_class {
+  text-align: center;
+}
+
+.status {
+  margin-right: 20px;
+}
+
+.button {
+  margin-left: 10px;
+}

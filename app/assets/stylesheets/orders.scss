@@ -1,3 +1,32 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.thanks-backimg {
+  background-image: url("/images/flour.jpg");
+  height: 700px;
+  background-size: cover;
+}
+
+.thanks-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 140px;
+}
+
+.order-input-head {
+   border-bottom: 4px solid rgb(188,221,255);
+}
+
+.order-content-head {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.confirm-color {
+  background-color: rgba(188,221,255,0.5);
+}
+
+.confirm-height {
+  min-height: 630px;
+}
