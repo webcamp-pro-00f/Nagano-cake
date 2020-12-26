@@ -40,4 +40,8 @@
 * gem 'jquery-rails'  
 * gem 'font-awesome-sass', '~> 5.13'
 
-## 開発者
+## 開発者  
+* 山崎洋暉 : https://github.com/einbone921
+* 阿部周平 : https://github.com/ashu02-git
+* 戸原佐季 : https://github.com/saki-smile
+* 米田尚巧 : https://github.com/0617yoneda
