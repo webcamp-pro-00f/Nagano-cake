@@ -14,13 +14,20 @@
           <th><%= f.password_field :password, autocomplete: "current-password", class: "customers_login_form" %></th>
         </tr>
       </table>
-
+      <div class="foget-password">
+        <%= link_to "=> パスワードを忘れた方はこちら" %>
+      </div>
       <div class="actions mt-5 login-btn">
         <%= f.submit "ログイン", class: "btn btn-info justify-content-end login-btn" %>
       </div>
     <% end %>
   </div>
   <div class="row">
-    <%= render "customers/shared/links" %>
+    <h3 class="new_customers_login_head p-2 shadow-sm text-light bg-info">登録がお済みでない方</h3>
+  </div>
+  <div class="row">
+    <div class="new-customer">
+      <%= link_to "こちら", new_customer_registration_path, class: "registration" %>から新規登録を行ってください。
+    </div>
   </div>
 </div>
