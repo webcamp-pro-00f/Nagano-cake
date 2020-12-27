@@ -1,6 +1,5 @@
 # README
 
-
 #ER図
 ![2020-12-26](https://user-images.githubusercontent.com/72295330/103147332-9b88ce00-4797-11eb-8a36-cb23775bbe0b.png)
 
@@ -45,7 +44,7 @@
 * gem 'jquery-rails'  
 * gem 'font-awesome-sass', '~> 5.13'
 
-## 開発者  
+## 開発者  『4名』
 * 山崎洋暉 : https://github.com/einbone921
 * 阿部周平 : https://github.com/ashu02-git
 * 戸原佐季 : https://github.com/saki-smile
