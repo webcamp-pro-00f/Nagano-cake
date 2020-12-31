@@ -4,7 +4,14 @@ class CartProductsController < ApplicationController
   def create
     cart_product = CartProduct.new(cart_product_params)
     cart_product.customer_id = current_customer.id
-    cart_product.save
+    customer_cart = CartProduct.where(customer_id: current_customer.id)
+    same_product = customer_cart.find_by(product_id: params[:cart_product][:product_id])
+    if same_product
+      same_product.amount += params[:cart_product][:amount].to_i
+      same_product.save
+    else
+      cart_product.save
+    end
     redirect_to cart_products_path
   end
 
