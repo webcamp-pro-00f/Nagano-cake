@@ -7,7 +7,7 @@
         <th class="costomer-label">購入者</th>
         <td>
           <%= link_to admins_customer_path(@order_customer) do %>
-            <%= @order.name %>
+            <%= @order.customer.customer_full_name %>
           <% end %>
         </td>
       </tr>
